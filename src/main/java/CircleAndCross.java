@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class CircleAndCross {
 
-    public void createAndPlayBoard() {
+    public void createBoardAndPlay() {
         String[][] boardGame = new String[3][3];
         for (int i = 0; i < boardGame.length; i++) {
             for (int j = 0; j < boardGame.length; j++) {
@@ -36,9 +36,9 @@ public class CircleAndCross {
 
 
     private boolean checkDraw(String[][] boardGame) {
-        if (boardGame[0][0] != "-" && boardGame[1][0] != "-" && boardGame[2][0] != "-" &&
-                boardGame[0][1] != "-" && boardGame[1][1] != "-" && boardGame[2][1] != "-" &&
-                boardGame[0][2] != "-" && boardGame[1][2] != "-" && boardGame[2][2] != "-") {
+        if (!boardGame[0][0].equals("-") && !boardGame[1][0].equals("-") && !boardGame[2][0].equals("-") &&
+                !boardGame[0][1].equals("-") && !boardGame[1][1].equals("-") && !boardGame[2][1].equals("-") &&
+                !boardGame[0][2].equals("-") && !boardGame[1][2].equals("-") && !boardGame[2][2].equals("-")) {
             System.out.println("KONIEC GRY!!! \nREMIS!");
             return true;
         }
@@ -46,14 +46,14 @@ public class CircleAndCross {
     }
 
     private boolean checkWinner(String[][] boardGame) {
-        if ((boardGame[0][0] == boardGame[1][0] && boardGame[1][0] == boardGame[2][0] && boardGame[2][0] != "-") ||
-                (boardGame[0][1] == boardGame[1][1] && boardGame[1][1] == boardGame[2][1] && boardGame[2][1] != "-") ||
-                (boardGame[0][2] == boardGame[1][2] && boardGame[1][2] == boardGame[2][2] && boardGame[2][2] != "-") ||
-                (boardGame[0][0] == boardGame[0][1] && boardGame[0][1] == boardGame[0][2] && boardGame[0][2] != "-") ||
-                (boardGame[1][0] == boardGame[1][1] && boardGame[1][1] == boardGame[1][2] && boardGame[1][2] != "-") ||
-                (boardGame[2][0] == boardGame[2][1] && boardGame[2][1] == boardGame[2][2] && boardGame[2][2] != "-") ||
-                (boardGame[0][0] == boardGame[1][1] && boardGame[1][1] == boardGame[2][2] && boardGame[2][2] != "-") ||
-                (boardGame[0][2] == boardGame[1][1] && boardGame[1][1] == boardGame[2][0] && boardGame[2][0] != "-")) {
+        if ((boardGame[0][0].equals(boardGame[1][0]) && boardGame[1][0].equals(boardGame[2][0]) && !boardGame[2][0].equals("-")) ||
+                (boardGame[0][1].equals(boardGame[1][1]) && boardGame[1][1].equals(boardGame[2][1]) && !boardGame[2][1].equals("-")) ||
+                (boardGame[0][2].equals(boardGame[1][2]) && boardGame[1][2].equals(boardGame[2][2]) && !boardGame[2][2].equals("-")) ||
+                (boardGame[0][0].equals(boardGame[0][1]) && boardGame[0][1].equals(boardGame[0][2]) && !boardGame[0][2].equals("-")) ||
+                (boardGame[1][0].equals(boardGame[1][1]) && boardGame[1][1].equals(boardGame[1][2]) && !boardGame[1][2].equals("-")) ||
+                (boardGame[2][0].equals(boardGame[2][1]) && boardGame[2][1].equals(boardGame[2][2]) && !boardGame[2][2].equals("-")) ||
+                (boardGame[0][0].equals(boardGame[1][1]) && boardGame[1][1].equals(boardGame[2][2]) && !boardGame[2][2].equals("-")) ||
+                (boardGame[0][2].equals(boardGame[1][1]) && boardGame[1][1].equals(boardGame[2][0]) && !boardGame[2][0].equals("-"))) {
             System.out.print("KONIEC GRY!!! \nWygrał: ");
             return true;
         }
@@ -158,7 +158,7 @@ public class CircleAndCross {
                 "\ngracz1 gra krzyzykami, natomiast gracz2 kółkami." +
                 "\nStart!!!!!" +
                 "\n*******************************");
-        String[][] boardOfReferences = getRefBoard();
+        String[][] boardOfReferences = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
         displayBoard(boardOfReferences);
     }
 
@@ -169,20 +169,6 @@ public class CircleAndCross {
             }
             System.out.println();
         }
-    }
-
-    private static String[][] getRefBoard() {
-        String[][] boardOfReferences = new String[3][3];
-        boardOfReferences[0][0] = "1";
-        boardOfReferences[0][1] = "2";
-        boardOfReferences[0][2] = "3";
-        boardOfReferences[1][0] = "4";
-        boardOfReferences[1][1] = "5";
-        boardOfReferences[1][2] = "6";
-        boardOfReferences[2][0] = "7";
-        boardOfReferences[2][1] = "8";
-        boardOfReferences[2][2] = "9";
-        return boardOfReferences;
     }
 
 }
