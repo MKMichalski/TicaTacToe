@@ -1,1 +1,1 @@
-exercice
+exercise
